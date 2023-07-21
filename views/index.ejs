@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+
+<main class="box ">
+  <ul class="list-group">
+    <li class="list-group-item active header-box">
+      <h1><%= dateText %></h1>
+    </li>
+    <% if(locals.items) { 
+      if (items.length < 1) {%>
+        <li class="list-group-item disabled">Add an item below</li>
+      <% } else {for (i=0; i<items.length; i++) {%>
+    <li class="list-group-item">
+      <input
+        class="form-check-input me-1"
+        type="checkbox"
+        value=""
+        id="thirdCheckboxStretched"
+      />
+      <label
+        class="form-check-label stretched-link"
+        for="thirdCheckboxStretched"
+        ><%= items[i]%></label
+      >
+    </li>
+    <% }}} %>
+    
+  </ul>
+  <div class="line">
+    <form action="/submit" method="POST">
+    <input
+      type="text"
+      class="inputer"
+      placeholder="New Item"
+      aria-label="New Item"
+      name="newItemText"
+      aria-describedby="button-addon2"
+    />
+    <button class="btn btn-outline-secondary buttoner" type="submit" id="button-addon2" >
+      Add
+    </button>
+    </form>
+  </div>
+</main>
+<%- include("partials/footer.ejs") %>
+
+
